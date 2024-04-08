@@ -171,7 +171,7 @@ function mostrarEmpresa(index) {
 
     for (let i = 0; i < categorias[index].productos.length; i++) {
         document.getElementById("productos-cat").innerHTML +=
-            `<div class="col-md-6 my-1">
+            `<div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 my-1">
         <div class="celda-empresas">
             <div class="encabezado" style="background-image: url(${categorias[index].productos[i].imagen}) ;"><h2>${categorias[index].productos[i].nombreProducto}</h2></div>
                 <div class="cuerpo-producto">                    
