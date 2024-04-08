@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+
+#tituloBienvenidos h2 {
+    font-family: 'Bowlby One', cursive;
+    color: #1A3151;
+}
+
+#tituloBienvenidos p {
+    color: #1A3151;
+    font-size: 2rem;
+}
+
+.navegacion {
+    font-family: 'Bowlby One', cursive;
+    background-color: #1A3151;
+    height: 100px;
+    padding: 15px 50px 15px 110px;
+    margin-bottom: 20px;
+}
+
+.marca {
+    display: flex;
+    float: left;
+}
+
+.marca a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2.5rem;
+}
+
+.acciones-pagina {
+    display: flex;
+    float: right;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+.usuarios {
+    width: 190px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #450C73;
+}
+
+.boton {
+    width: 150px;
+    background-color: #122238;
+    color: #ffffff;
+
+}
+
+.boton:hover {
+    background-color: #ffffff00;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+    color: #ffffff;
+}
+
+.template {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 25px;
+    border-width: 0px;
+    height: 40px;
+}
+
+.categorias {
+    margin-bottom: 100px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.card p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.card h2 {
+    font-family: 'Bowlby One', cursive;
+    color: #ffffff;
+    font-size: 1.4rem;
+}
+
+.icono {
+    background-color: white;
+    color: #1A3151;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    width: 80px;
+    height: 60px;
+    margin: 15px;
+    padding-top: 15px;
+}
+
+.modal-header {
+    font-family: 'Bowlby One', cursive;
+    color: #ffffff;
+    background-color: #1A3151;
+}
+
+#modal-cuerpo {
+    margin: 50px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #F2F2F2;
+}
+
+.nombre-orden {
+    color: #1A3151;
+}
+
+.descripcion-orden {
+    color: "#000000";
+    font-size: 0.9rem;
+}
+
+.precio-orden {
+    font-weight: bold;
+}
+
+.btn-primary {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    background-color: #1A3151;
+    border-radius: 25px;
+    border-width: 0px;
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    border-color: #1A3151;
+    border-style: solid;
+    border-width: 1px;
+    color: #1A3151;
+}

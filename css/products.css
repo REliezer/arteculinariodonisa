@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+#modal-prod-empre {
+    margin: 25px 50px 25px 50px;
+}
+
+.encabezado {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 15px 15px 0 0;
+    padding: 150px 10px 5px 10px;
+}
+
+.encabezado h2 {
+    font-family: 'Bowlby One', cursive;
+    color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #1A3151;
+}
+
+.celda-empresas {
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #1A3151;
+    border-width: 1px;
+}
+
+.nombre-producto {
+    color: #1A3151;
+    font-weight: 450;
+    font-size: 1.5rem;
+}
+
+.cuerpo-producto {
+    margin: 15px;
+}
+
+.descripcion-producto {
+    color: #1A3151;
+    text-align: left;
+}
+
+.precio-producto {
+    color: #1A3151;
+    text-align: right;
+    font-weight: bold;
+}
+
+.boton-pedir {
+    display: flex;
+    float: right;
+}
+
+.boton-pedir:hover {
+    background-color: #ffffff;
+    border-color: #1A3151;
+    border-style: solid;
+    border-width: 1px;
+    color: #1A3151;
+}

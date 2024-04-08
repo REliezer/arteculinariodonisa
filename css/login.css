@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+.login {
+    width: 500px;
+    height: 66vh;
+    padding: 25px, 0px, 25px, 0px;
+}
+
+.login button {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #1A3151;
+    font-size: 1rem;
+}
+
+.login button:hover{
+    background-color: #1A3151!important;
+}
+
+.btn-outline-primary{
+    border-color: #1A3151;
+    font-family: "Roboto", cursive;
+    font-weight: 400;
+    color: #1A3151;
+}
+
+.form-control {
+    border-color: #1A3151!important;
+}
+#tituloLogin h2 {
+    font-family: 'Bowlby One', cursive;
+    color: #1A3151;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}

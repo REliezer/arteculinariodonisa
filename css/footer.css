@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+
+.pie-pagina {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 1rem;
+    background-color: #1A3151;
+    height: 100px;
+    bottom: 0px;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.pie-pagina a{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+}
