@@ -8,8 +8,9 @@
     color: #ffffff;
     font-size: 1rem;
     background-color: #1A3151;
-    height: 100px;
-    bottom: 0px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     margin-top: 20px;
     padding-top: 20px;
 }

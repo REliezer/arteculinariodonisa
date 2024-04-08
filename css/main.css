@@ -16,7 +16,7 @@
     font-family: 'Bowlby One', cursive;
     background-color: #1A3151;
     height: 100px;
-    padding: 15px 50px 15px 110px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -28,7 +28,7 @@
 .marca a {
     text-decoration: none;
     color: #ffffff;
-    font-size: 2.5rem;
+
 }
 
 .acciones-pagina {
@@ -39,14 +39,12 @@
 }
 
 .usuarios {
-    width: 190px;
     text-align: center;
     background-color: #ffffff;
     color: #450C73;
 }
 
-.boton {
-    width: 150px;
+.boton {    
     background-color: #122238;
     color: #ffffff;
 
