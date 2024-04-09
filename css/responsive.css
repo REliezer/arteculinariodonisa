@@ -11,8 +11,8 @@
     }
 
     .marca a {
-        font-size: 1rem;
-        /* Ajusta el relleno para pantallas más pequeñas */
+        font-size: 1.4rem;
+        padding-top: 15px;
     }
 
     .usuarios {
@@ -29,8 +29,23 @@
         width: 50px;
     }
 
+    .boton2 {
+        width: 150px;
+    }
+
     .ver-ordenes-texto {
         display: none;
+    }
+
+    #buttonLogin {
+        font-size: 0;
+        color: transparent;
+    }
+    
+    #buttonLogin i {
+        display: block;
+        font-size: 16px; 
+        color: black; 
     }
 
     .card {
@@ -51,7 +66,11 @@
 
     .login {
         width: 90%;
-        height: 46vh;
+    }
+
+    #btnLogin {
+        width: 150px;
+        font-size: 1rem;
     }
 }
 

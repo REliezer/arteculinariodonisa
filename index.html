@@ -29,9 +29,12 @@
             <div class="marca">
                 <a href="#">Arte Culinario 'Don Isa'</a>
             </div>
-            <div class="acciones-pagina" id="accionesPagina" style="display: none;">
-                <select class="form-select usuarios template" id="usuarioActual"
-                    aria-label="Default select example"></select>
+            <div class="acciones-pagina" id="accionesPagina">
+                <div id="divUser">
+                    <select class="form-select usuarios template" id="usuarioActual"
+                        aria-label="Default select example"></select>
+                </div>
+
                 <button class="btn btn-secondary boton template" type="button" onclick="verOrden();"
                     data-bs-toggle="modal" data-bs-target="#modalOrdenesUsuario">
                     <span class="ver-ordenes-icono">
@@ -41,9 +44,9 @@
                 </button>
             </div>
         </div>
-
     </div>
-    <div class="container login" id="login">
+    
+    <div class="container login" id="login" style="display: none;">
         <div id="tituloLogin">
             <h2>Login</h2>
         </div>
@@ -67,7 +70,7 @@
         </form>
     </div>
 
-    <div class="container landingPage" id="categoriasProductos" style="display: none;">
+    <div class="container landingPage" id="categoriasProductos">
         <div id="liveAlertPlaceholder"></div>
         <div id="tituloBienvenidos">
 
@@ -76,7 +79,7 @@
 
         </div>
     </div>
-    <div class="pie-pagina">
+    <footer class="pie-pagina">
         <div class="container text-center">
             <div class="row">
                 <div class="col-md-auto titulo-pie">
@@ -110,7 +113,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 
     <!-- Modal Ordenes Usuarios-->
     <div class="modal fade" id="modalOrdenesUsuario" tabindex="-1" aria-labelledby="modalOrdenesUsuarioLabel"
@@ -125,7 +128,8 @@
 
                 </div>
                 <div class="modal-footer" id="modalPie">
-                    <button type="button" class="btn btn-primary" id="liveAlertBtn" onclick="finalizarOrden()">Finalizar Orden</button>
+                    <button type="button" class="btn btn-primary" id="liveAlertBtn" disabled = "true" onclick="finalizarOrden()">Finalizar
+                        Orden</button>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
@@ -160,7 +164,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary boton" onclick="procesarOrden()">Procesar Orden</button>
+                    <button class="btn btn-primary boton2" onclick="procesarOrden()">Procesar Orden</button>
                 </div>
             </div>
         </div>

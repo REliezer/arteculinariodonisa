@@ -58,6 +58,20 @@
     color: #ffffff;
 }
 
+.boton2 {    
+    background-color: #122238;
+    color: #ffffff;
+
+}
+
+.boton2:hover {
+    background-color: #ffffff00;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+    color: #ffffff;
+}
+
 .template {
     font-family: "Roboto", sans-serif;
     font-weight: 400;

@@ -1,5 +1,5 @@
 let clienteLogueado = [];
-let conectado = false;
+var conectado = false;
 var localStorage = window.localStorage;
 var ordenes = JSON.parse(localStorage.getItem('ordenes'));
 
@@ -37,7 +37,8 @@ function login() {
 function logout() {
     localStorage.removeItem('ordenes');
     clienteLogueado = [];
-    login();
+    conectado = false;
+    generarUsuarios();
 }
 
 function verificarLogin() {
@@ -45,88 +46,144 @@ function verificarLogin() {
     let pass = document.getElementById('inputPass').value;
     let usuarioEncontrado = false;
 
+    if (!conectado) {
+        for (const element of usuarios) {
+            if ((element.correo === user) & (element.contrasenia === pass)) {
+                clienteLogueado[0] = {
+                    "nombre": element.nombre,
+                    "apellido": element.apellido
+                }
+                console.log(clienteLogueado[0]);
 
-    for (const element of usuarios) {
-        if ((element.correo === user) & (element.contrasenia === pass)) {
-            clienteLogueado[0] = {
-                "nombre": element.nombre,
-                "apellido": element.apellido
+                const orden = {
+                    nombre: element.nombre + " " + element.apellido,
+                    pedido: [
+
+                    ],
+                    subtotal: 0,
+                    isv: 0,
+                    total: 0,
+                };
+
+                console.log(orden);
+                localStorage.setItem('ordenes', JSON.stringify([orden]));
+
+                conectado = true;
+                usuarioEncontrado = true;
+                break;
             }
-            console.log(clienteLogueado[0]);
+        }
 
-            const orden = {
-                nombre: element.nombre + " " + element.apellido,
-                pedido: [
+        if (!usuarioEncontrado) {
+            const alertPlaceholder = document.getElementById('liveAlertPlaceholderLogin')
+            const appendAlert = (message, type) => {
+                const wrapper = document.createElement('div')
+                wrapper.innerHTML = [
+                    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('')
 
-                ],
-                subtotal: 0,
-                isv: 0,
-                total: 0,
+                alertPlaceholder.append(wrapper)
             };
-
-            console.log(orden);
-            localStorage.setItem('ordenes', JSON.stringify([orden]));
-
-            conectado = true;
-            generarCategorias();
-            generarUsuarios();
-            usuarioEncontrado = true;
-            break;
+            appendAlert('Correo electronico o contraseña incorrecta.', 'danger');
         }
     }
 
-    if (!usuarioEncontrado) {
-        const alertPlaceholder = document.getElementById('liveAlertPlaceholderLogin')
-        const appendAlert = (message, type) => {
-            const wrapper = document.createElement('div')
-            wrapper.innerHTML = [
-                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-                `   <div>${message}</div>`,
-                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-                '</div>'
-            ].join('')
 
-            alertPlaceholder.append(wrapper)
-        };
-        appendAlert('Correo electronico o contraseña incorrecta.', 'danger');
-    }
+    generarCategorias();
+    generarUsuarios();
 }
 
 function generarUsuarios() {
-    var usuarioActual = document.getElementById('usuarioActual');
-    usuarioActual.innerHTML = '';
+    var divUser = document.getElementById('divUser');
 
-    usuarioActual.innerHTML +=
-        `<option value="${0}">${clienteLogueado[0].nombre} ${clienteLogueado[0].apellido}</option>`;
+    if (!conectado) { //false
+        divUser.innerHTML = '';
+        var buttonLogin = document.createElement('button');
+        buttonLogin.id = 'buttonLogin';
+        buttonLogin.textContent = 'Iniciar Sesión';
+        buttonLogin.className = 'usuarios template';
 
-    var optionCerrarSesion = document.createElement('option');
-    optionCerrarSesion.value = 'cerrarSesion';
-    optionCerrarSesion.textContent = 'Cerrar Sesión';
-    usuarioActual.appendChild(optionCerrarSesion);
+        var icono = document.createElement('i');
+        icono.className = 'fas fa-sign-in-alt';
+        icono.style.display = 'none';
+        buttonLogin.appendChild(icono);
 
-    usuarioActual.onchange = function () {
-        if (usuarioActual.value === 'cerrarSesion') {
-            logout();
+        divUser.onclick = function () {
+            login();
+        };
+
+        divUser.appendChild(buttonLogin);
+
+    } else { //true
+        divUser.onclick = null;
+        var existe = document.getElementById('usuarioActual');
+        document.getElementById('buttonLogin').style.display = 'none';
+
+        if (existe) {
+            existe.innerHTML = '';
+            var optionUsuario = document.createElement('option');
+            optionUsuario.value = 'usuarioLogueado';
+            optionUsuario.textContent = `${clienteLogueado[0].nombre} ${clienteLogueado[0].apellido}`;
+            existe.appendChild(optionUsuario);
+
+            var optionCerrarSesion = document.createElement('option');
+            optionCerrarSesion.value = 'cerrarSesion';
+            optionCerrarSesion.textContent = 'Cerrar Sesión';
+            existe.appendChild(optionCerrarSesion);
+
+            existe.onchange = function () {
+                if (selectUsuario.value === 'cerrarSesion') {
+                    logout();
+                }
+            };
+        } else {
+            var selectUsuario = document.createElement('select');
+            selectUsuario.className = 'form-select usuarios template';
+            selectUsuario.id = 'usuarioActual';
+
+            var optionUsuario = document.createElement('option');
+            optionUsuario.value = 'usuarioLogueado';
+            optionUsuario.textContent = `${clienteLogueado[0].nombre} ${clienteLogueado[0].apellido}`;
+            selectUsuario.appendChild(optionUsuario);
+
+            var optionCerrarSesion = document.createElement('option');
+            optionCerrarSesion.value = 'cerrarSesion';
+            optionCerrarSesion.textContent = 'Cerrar Sesión';
+            selectUsuario.appendChild(optionCerrarSesion);
+
+            selectUsuario.onchange = function () {
+                if (selectUsuario.value === 'cerrarSesion') {
+                    logout();
+                }
+            };
+            divUser.appendChild(selectUsuario);
         }
-    };
 
+
+    }
     inicio();
 
 }
 
 function inicio() {
-    document.getElementById('tituloBienvenidos').innerHTML =
-        `<h2>¡Hola ${clienteLogueado[0].nombre}!</h2>
+    if (!conectado) {
+        document.getElementById('tituloBienvenidos').innerHTML =
+            `<h2>¡Bienvenido!</h2>
         <p>¿Que necesitas?</p>`;
+    } else {
+        document.getElementById('tituloBienvenidos').innerHTML =
+            `<h2>¡Hola ${clienteLogueado[0].nombre}!</h2>
+        <p>¿Que necesitas?</p>`;
+    }
+
 }
 
 function verOrden() {
     document.getElementById('modal-cuerpo').innerHTML = '';
     if (ordenes !== null && ordenes.length > 0 && ordenes[0] !== undefined && ordenes[0].pedido !== undefined) {
-
-        document.getElementById('modalTitulo').innerHTML =
-            `<h5>${clienteLogueado[0].nombre}, Estas son tus ordenes</h5>`;
-
         if ((ordenes[0].pedido.length != null)) {
             for (const element of ordenes[0].pedido) {
                 document.getElementById('modal-cuerpo').innerHTML +=
@@ -152,12 +209,36 @@ function verOrden() {
             document.getElementById('modal-cuerpo').innerHTML +=
                 `<h2 class="">No tienes ninguna orden.</h2>`;
         }
+        
+        if (!conectado) {
+            document.getElementById('modalTitulo').innerHTML =
+            `<h5>Estas son tus ordenes</h5>`;
+
+            document.getElementById('modal-cuerpo').innerHTML +=
+        `
+            <div class="mb-2" style="display: flex; justify-content: center;" >
+                <button type="button" class="btn btn-outline-primary btn-lg" id="btnLogin" onclick="login()">Iniciar Sesión</button>
+            </div>
+        
+        <div class="row">
+            <div class="col" style="display: flex, float:right" >
+                <label class="form-label descripcion-producto">Ingresa tu nombre:</label>
+            </div>
+            <div class="col" style="display: flex, float:left">
+                <input type="text" class="form-control form-control-sm pl-0" id="nombreUser" onkeyup="validarRelleno()">
+            </div>
+        </div>`;
+        }else{
+            document.getElementById('modalTitulo').innerHTML =
+            `<h5>${clienteLogueado[0].nombre}, Estas son tus ordenes</h5>`;
+
+            var button = document.getElementById('liveAlertBtn');
+            button.disabled = false;
+        }
     } else {
         console.error("Error: La variable 'ordenes' no está definida o está vacía.");
     }
-
 }
-
 
 function mostrarEmpresa(index) {
     $('#modalEmpresa').modal('show');
@@ -171,7 +252,7 @@ function mostrarEmpresa(index) {
 
     for (let i = 0; i < categorias[index].productos.length; i++) {
         document.getElementById("productos-cat").innerHTML +=
-            `<div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 my-1">
+            `<div class="col-sm-12 col-md-6 my-1">
         <div class="celda-empresas">
             <div class="encabezado" style="background-image: url(${categorias[index].productos[i].imagen}) ;"><h2>${categorias[index].productos[i].nombreProducto}</h2></div>
                 <div class="cuerpo-producto">                    
@@ -276,10 +357,10 @@ function finalizarOrden() {
 
 function eliminarPedido(nombreProducto) {
 
-    var indicePedido = (ordenes[0].pedido).findIndex(function(element){
+    var indicePedido = (ordenes[0].pedido).findIndex(function (element) {
         return element.nombreProducto === nombreProducto;
     })
-    if(indicePedido !== -1){
+    if (indicePedido !== -1) {
         console.log('Eliminar producto con el indice', indicePedido);
         ordenes[0].pedido.splice(indicePedido, 1);
     }
@@ -288,11 +369,22 @@ function eliminarPedido(nombreProducto) {
     $('#modalOrdenesUsuario').modal('hide');
 
     $('.modal-backdrop').remove();
-    
+
     inicio();
     verOrden();
 }
 
+function validarRelleno() {
+    var input = document.getElementById('nombreUser');
+    var boton = document.getElementById('liveAlertBtn');
 
+    if (input.value.trim() !== '') { 
+        boton.disabled = false;
+    } else {
+        boton.disabled = true;
+    }
+}
 
+generarCategorias();
+generarUsuarios();
 
